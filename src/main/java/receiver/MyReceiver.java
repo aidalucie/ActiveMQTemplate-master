@@ -1,19 +1,9 @@
 package receiver;
 
-import javax.jms.Message;
-import javax.jms.Queue;
-import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueReceiver;
-import javax.jms.QueueSender;
-import javax.jms.QueueSession;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
-import javax.jms.Queue;
-import javax.jms.QueueConnectionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import javax.jms.*;
 
 public class MyReceiver {
 
@@ -43,8 +33,18 @@ public class MyReceiver {
 
 			// Receive the message
 
-			Message m = receiver.receive();
-			
+			TextMessage m = (TextMessage)receiver.receive();
+
+			System.out.println("\n\nLE MESSAGE EST :" + m.getText() + "\n\n");
+
+
+			TextMessage m2 = (TextMessage)receiver.receive();
+
+			System.out.println("\n\nLE MESSAGE EST :" + m2.getText() + "\n\n");
+
+
+
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}

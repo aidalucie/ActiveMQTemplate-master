@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MySender {
 
+
 	public static void main(String[] args) {
 		
 		try{
@@ -43,6 +44,10 @@ public class MySender {
 			// Create a message
 
 			TextMessage message = session.createTextMessage();
+
+			message.setText("Hello");
+
+			System.out.println("message: " + message.getText());
 
 			// Send the message
 
