@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ActiveMQTemplate-master.iml" filepath="$PROJECT_DIR$/ActiveMQTemplate-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ActiveMQTemplate-master_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ActiveMQTemplate-master_main.iml" group="ActiveMQTemplate-master" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ActiveMQTemplate-master_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ActiveMQTemplate-master_test.iml" group="ActiveMQTemplate-master" />
+    </modules>
+  </component>
+</project>
