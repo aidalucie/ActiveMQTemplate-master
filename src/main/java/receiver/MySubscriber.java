@@ -33,17 +33,22 @@ public class MySubscriber {
 
         // Create a subscription
 
-            TopicSubscriber subscriber = session.createDurableSubscriber(topic, "M1") ;
+           // TopicSubscriber subscriber = session.createDurableSubscriber(topic, "M1") ;
+
+            TopicSubscriber subscriber = session.createSubscriber(topic) ;
+
+            TopicSubscriber subscriber2 = session.createSubscriber(topic) ;
 
 
             // Receive the message
+
 
         TextMessage m = (TextMessage)subscriber.receive();
 
         System.out.println("\n\nLE MESSAGE EST :" + m.getText() + "\n\n");
 
 
-        TextMessage m2 = (TextMessage)subscriber.receive();
+        TextMessage m2 = (TextMessage)subscriber2.receive();
 
         System.out.println("\n\nLE MESSAGE EST :" + m2.getText() + "\n\n");
 
