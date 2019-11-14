@@ -41,7 +41,14 @@ public class MyPublisher {
 
             // Send the message
 
-            publisher.send(message);
+            // send a persistent (DeliveryMode = 2) message with high priority which will never expire
+            publisher.publish(message,DeliveryMode.PERSISTENT,9,0);
+
+
+            //send a non-persistent (DeliveryMode = 1) message with low priority that will expire
+
+            publisher.publish(message,DeliveryMode.NON_PERSISTENT,0,3);
+            
 
             // Close the session
 
