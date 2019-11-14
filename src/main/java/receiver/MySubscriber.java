@@ -1,18 +1,21 @@
 package receiver;
 
-import javax.jms.TopicConnectionFactory;
-import javax.jms.TopicSession;
-import javax.jms.TopicConnection; 
+import javax.jms.*;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class MyReceiverTopic {
+public class MySubscriber {
+
+    public static void main(String[] args) {
+
+
     
     	try{
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextJMS.xml");
-        TopicConnectionFactory factory = (TopicConnectionFactory) applicationContext.getBean("connectionFactory")
+        TopicConnectionFactory factory = (TopicConnectionFactory) applicationContext.getBean("connectionFactory");
 
         Topic topic = (Topic) applicationContext.getBean("topic");
 
@@ -22,24 +25,25 @@ public class MyReceiverTopic {
 
         // Open a session
 
-        TopicSession session = connection.createTopicSession(false,Session.AUTO_ACKNOWLEDGE) ;
+        TopicSession session = connection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE) ;
 
         // start the connection
 
         connection.start();
 
-        // Create a receive
+        // Create a subscription
 
-        TopicReceiver receiver = session.createReceiver(topic);
+            TopicSubscriber subscriber = session.createDurableSubscriber(topic, "M1") ;
 
-        // Receive the message
 
-        TextMessage m = (TextMessage)receiver.receive();
+            // Receive the message
+
+        TextMessage m = (TextMessage)subscriber.receive();
 
         System.out.println("\n\nLE MESSAGE EST :" + m.getText() + "\n\n");
 
 
-        TextMessage m2 = (TextMessage)receiver.receive();
+        TextMessage m2 = (TextMessage)subscriber.receive();
 
         System.out.println("\n\nLE MESSAGE EST :" + m2.getText() + "\n\n");
 
@@ -48,5 +52,6 @@ public class MyReceiverTopic {
 
     }catch(Exception e){
         e.printStackTrace();
+    }
     }
 }
